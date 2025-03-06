@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   LucideBeaker, 
   Leaf, 
-  Activity, 
+  Activity,
   Search, 
   BookOpen, 
   Calendar, 
@@ -20,6 +20,7 @@ import TestReminder from '@/components/TestReminder';
 import { Button } from '@/components/ui/button';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [greeting, setGreeting] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -102,7 +103,7 @@ const Index = () => {
             testName="AOSAT"
             time="12 PM"
             date="today"
-            onStartTest={() => console.log('Starting test...')}
+            onStartTest={() => navigate('/topgallary')} // Navigate to TopGallary
           />
 
           {/* Improvement Book section */}
@@ -133,7 +134,10 @@ const Index = () => {
           <div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold">Explore Study Materials</h2>
-              <div className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+              <div className="inline-flex items-center justify-center whitespace-nowrap 
+              rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 
+              focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm 
+              hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
                 NEET
               </div>
             </div>
