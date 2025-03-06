@@ -17,9 +17,11 @@ const Header = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src="https://i.imgur.com/YqmPWGW.png" 
+            src="https://upload.wikimedia.org/wikipedia/commons/d/db/ALLEN_Career_Institute_logo.svg"
             alt="Allen Logo" 
             className="h-8"
+            height="800"
+            width="80"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = "https://placehold.co/80x30/0063c5/white?text=ALLEN";
