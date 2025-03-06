@@ -1,8 +1,12 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import topgallary from '@/pages/topgallary';
+
+
 
 const TestReminder = ({ 
   testName = "AOSAT", 
@@ -10,25 +14,32 @@ const TestReminder = ({
   date = "today", 
   onStartTest 
 }) => {
+
+  const navigate= useNavigate();
+  const handleClick = () => {
+    navigate('/topgallary');
+  
+  
+  }
   return (
-    <div className="bg-blue-100 rounded-2xl p-6 overflow-hidden relative">
+    <div className="bg-sky-200 rounded-2xl p-10 cursor-pointer overflow-hidden relative min-h-200px] max-w-[1100px] ml-4 mr-4" onClick={handleClick} >
       <div className="flex justify-between items-center">
         <div className="z-10">
           <h2 className="text-2xl font-bold mb-6">
-            Your <span className="text-brand-blue">{testName}</span> starts at <span className="text-brand-blue">{time}</span> {date}!
+            Visit <span className="text-brand-blue">Toppers</span> Gallery
           </h2>
           
           <Button 
-            onClick={onStartTest} 
-            className="bg-brand-blue hover:bg-brand-lightBlue text-white px-6"
+            
+            className="bg-brand-blue hover:bg-brand-lightBlue text-white px-6 rounded-2xl"
           >
-            Start Test <ArrowRight className="ml-2" size={18} />
+            Visit <ArrowRight className="ml-2" size={18} />
           </Button>
         </div>
         
         <div className="hidden md:block relative z-10">
           <img 
-            src="/lovable-uploads/1f6561e1-1533-4a1f-be85-e4ad7c00c981.png" 
+            src="student.png" 
             alt="Student preparing for test" 
             className="max-h-[160px] object-contain"
           />
@@ -46,3 +57,6 @@ const TestReminder = ({
 };
 
 export default TestReminder;
+
+
+

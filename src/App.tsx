@@ -4,8 +4,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import TESTVEN from "./pages/TESTVEN";
+import TopGallary from "././pages/TopGallary"
+// import Index from "./pages/TopGallary.js";
 import NotFound from "./pages/NotFound";
+import Phy from "./pages/Phy.tsx";
+import Chem from "./pages/Chem.tsx";
+import Overall from "./pages/Overall.tsx"
+import Maths from "./pages/Maths.tsx"
+import TESTVEN from "./pages/TESTVEN";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +22,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+        <Route path="/overall" element={<Overall />} />
+          <Route path="/phy" element={<Phy />} />
+          <Route path="/chem" element={<Chem />} />
+          <Route path="/maths" element={<Maths />} />
+          <Route path="/topgallary" element={<TopGallary />} />
           <Route path="/" element={<Index />} />
           <Route path="/doubts" element={<Index />} />
           <Route path="/testven" element={<TESTVEN />} />
