@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +11,7 @@ import Phy from "./pages/Phy.tsx";
 import Chem from "./pages/Chem.tsx";
 import Overall from "./pages/Overall.tsx"
 import Maths from "./pages/Maths.tsx"
+import TESTVEN from "./pages/TESTVEN";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +29,7 @@ const App = () => (
           <Route path="/topgallary" element={<TopGallary />} />
           <Route path="/" element={<Index />} />
           <Route path="/doubts" element={<Index />} />
+          <Route path="/testven" element={<TESTVEN />} />
           <Route path="/practice" element={<Index />} />
           <Route path="/tests" element={<Index />} />
           <Route path="/improvement-book" element={<Index />} />
