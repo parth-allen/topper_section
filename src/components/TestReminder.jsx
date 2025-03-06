@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-
+import topgallary from '@/pages/topgallary';
 
 
 
@@ -17,7 +17,7 @@ const TestReminder = ({
 
   const navigate= useNavigate();
   const handleClick = () => {
-    navigate('/toppers');
+    navigate('/topgallary');
   
   
   }
