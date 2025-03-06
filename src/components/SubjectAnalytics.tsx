@@ -31,8 +31,8 @@ interface SubjectAnalyticsProps {
   pyqStudent: number;
   totalTopper: number;
   totalStudent: number;
-  subjectRanks: number;
-  subjectScores: number;
+  subjectRanks: number[];
+  subjectScores: number[];
 }
 
 const questionConfig = {
@@ -129,10 +129,10 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
   ];
 
   return (
-    <div className="w-full h-full grid grid-cols-4 gap-4 p-4">
+    <div className="w-full h-full grid grid-cols-2 gap-4 p-4">
       <div>
-        <Card className="flex flex-col">
-          <CardHeader className="items-center pb-7">
+        <Card className="flex flex-col h-full items-center">
+          <CardHeader className="items-center pb-0">
             <CardTitle>Tests Given</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 pb-0">
