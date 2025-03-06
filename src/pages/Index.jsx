@@ -122,7 +122,7 @@ const Index = () => {
                 title="Biomolecules" 
                 icon={<LucideBeaker />} 
                 progress={0} 
-                total={1} 
+                total={1} g
                 completed={0}
                 color="bg-purple-100"
                 iconColor="text-purple-600"
