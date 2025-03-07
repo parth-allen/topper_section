@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import topgallary from '@/pages/topgallary';
-
+import Input_name from '@/pages/Input_name';
 
 
 const TestReminder = ({ 
@@ -17,7 +17,7 @@ const TestReminder = ({
 
   const navigate= useNavigate();
   const handleClick = () => {
-    navigate('/topgallary');
+    navigate('/Input_name');
   
   
   }

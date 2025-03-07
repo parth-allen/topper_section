@@ -12,7 +12,8 @@ import Chem from "./pages/Chem.tsx";
 import Overall from "./pages/Overall.tsx"
 import Maths from "./pages/Maths.tsx"
 import TESTVEN from "./pages/TESTVEN";
-
+import SubjectAnalytics from "./components/SubjectAnalytics.tsx";
+import Input_name from "./pages/Input_name.tsx";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -23,11 +24,19 @@ const App = () => (
       <BrowserRouter>
         <Routes>
         <Route path="/overall" element={<Overall />} />
-          <Route path="/phy" element={<Phy />} />
-          <Route path="/chem" element={<Chem />} />
-          <Route path="/maths" element={<Maths />} />
+          <Route path="/topgallary/phy" element={<Phy />} />
+          <Route path="/topgallary/chem" element={<Chem />} />
+          <Route path="/topgallary/maths" element={<Maths />} />
           <Route path="/topgallary" element={<TopGallary />} />
           <Route path="/" element={<Index />} />
+          <Route path="/Input_name" element={<Input_name/>} />
+          {/* <Route path="/" element={<SubjectAnalytics subject="Physics"
+  pyqTopper={90}
+  pyqStudent={70}
+  totalTopper={100}
+  totalStudent={80}
+  subjectRanks={[50]}
+  subjectScores={[67]}/>} /> */}
           <Route path="/doubts" element={<Index />} />
           <Route path="/testven" element={<TESTVEN />} />
           <Route path="/practice" element={<Index />} />

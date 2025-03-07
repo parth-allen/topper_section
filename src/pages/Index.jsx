@@ -103,7 +103,7 @@ const Index = () => {
             testName="AOSAT"
             time="12 PM"
             date="today"
-            onStartTest={() => navigate('/topgallary')} // Navigate to TopGallary
+            onStartTest={() => navigate('/Input_name')} // Navigate to TopGallary
           />
 
           {/* Improvement Book section */}

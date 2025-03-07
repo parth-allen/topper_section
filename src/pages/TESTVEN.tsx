@@ -46,38 +46,16 @@ const TESTVEN = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <div className="bg-blue-600 text-white p-4">
-        <div className="font-bold text-3xl">Physics Analysis</div>
-      </div>
-
-      {/* Main content */}
-      <div className="bg-gray-50 flex-grow p-4">
-        <div className="mx-auto">
-          <SubjectAnalytics
-            subject="Physics"
-            pyqTopper={100}
-            pyqStudent={90}
-            totalTopper={100}
-            totalStudent={90}
-            subjectRanks={[80, 90, 70, 50, 13, 45, 22]}
-            subjectScores={[20, 40, 30, 10, 50, 80, 100]}
-            topperTests={100}
-            studentTests={80}
-          />
-
-          {/* AI Response */}
-          <div className="mt-6 p-4 bg-white rounded-md shadow">
-            <p className="text-gray-800">{aiResponse}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="bg-gray-800 text-white p-4 text-center">
-        © 2023 Allen. All rights reserved.
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <SubjectAnalytics
+        subject="Physics"
+        pyqTopper={100}
+        pyqStudent={90}
+        totalTopper={100}
+        totalStudent={90}
+        subjectRanks={[7]}
+        subjectScores={[80]}
+      />
     </div>
   );
 };
