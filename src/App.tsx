@@ -12,14 +12,15 @@ import Chem from "./pages/Chem.tsx";
 import Overall from "./pages/Overall.tsx"
 import Maths from "./pages/Maths.tsx"
 import TESTVEN from "./pages/TESTVEN";
-
+import NotificationComponent from "./components/NotificationComponent.tsx";
 const queryClient = new QueryClient();
-
+import { studentData } from "./data/studentData.tsx";
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <NotificationComponent student={studentData} />
       <BrowserRouter>
         <Routes>
         <Route path="/overall" element={<Overall />} />
