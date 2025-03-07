@@ -9,8 +9,8 @@ const TESTVEN = () => {
         pyqStudent={90}
         totalTopper={100}
         totalStudent={90}
-        subjectRanks={7}
-        subjectScores={80}
+        subjectRanks={[80, 90, 70, 50, 13, 45, 22]}
+        subjectScores={[80, 90, 70, 50, 13, 45, 22]}
       />
     </div>
   );

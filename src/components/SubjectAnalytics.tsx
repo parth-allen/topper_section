@@ -9,6 +9,7 @@ import {
   LineChart,
   Pie,
   PieChart,
+  LabelList,
 } from "recharts";
 import {
   Card,
@@ -23,6 +24,8 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
 } from "@/components/ui/chart";
 
 interface SubjectAnalyticsProps {
@@ -33,6 +36,8 @@ interface SubjectAnalyticsProps {
   totalStudent: number;
   subjectRanks: number[];
   subjectScores: number[];
+  topperTests?: number;
+  studentTests?: number;
 }
 
 const questionConfig = {
@@ -57,9 +62,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const PieChartConfig = {
+const pieConfig = {
   visitors: {
-    label: "Visitors",
+    label: "tests",
   },
   chrome: {
     label: "Chrome",
@@ -91,6 +96,8 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
   totalStudent,
   subjectRanks,
   subjectScores,
+  topperTests = 100,
+  studentTests = 80,
 }) => {
   const lag =
     ((pyqTopper + totalTopper - pyqStudent - totalStudent) * 100) /
@@ -103,6 +110,7 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
     { month: "Total", topper: 305, you: 200 },
   ];
 
+  // have to populate this data from subjectRanks prop
   const rankData = [
     { month: "Test0", rank: totalStudents - 100 },
     { month: "Test1", rank: totalStudents - 80 },
@@ -113,6 +121,7 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
     { month: "Test6", rank: totalStudents - 10 },
   ];
 
+  // have to populate this data from subjectScores prop
   const scoreData = [
     { month: "Test0", score: 20 },
     { month: "Test1", score: 40 },
@@ -124,36 +133,43 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
   ];
 
   const totalTestData = [
-    { browser: "You", visitors: 10, fill: "#2463EB" },
-    { browser: "Topper", visitors: 15, fill: "#BDDCFE" },
+    { browser: "You", visitors: studentTests, fill: "#2463EB" },
+    { browser: "Topper", visitors: topperTests, fill: "#BDDCFE" },
   ];
 
   return (
     <div className="w-full h-full grid grid-cols-2 gap-4 p-4">
       <div>
-        <Card className="flex flex-col h-full items-center">
-          <CardHeader className="items-center pb-0">
-            <CardTitle>Tests Given</CardTitle>
+        <Card className="flex flex-col h-full">
+          <CardHeader className="items-center pb-20">
+            <CardTitle>Tests Attempted</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 pb-0">
             <ChartContainer
-              config={chartConfig}
-              className="mx-auto aspect-square max-h-[250px]"
+              config={pieConfig}
+              className="mx-auto aspect-square max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
             >
               <PieChart>
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent hideLabel />}
-                />
+                <ChartTooltip content={<ChartTooltipContent hideLabel />} />
                 <Pie
                   data={totalTestData}
                   dataKey="visitors"
+                  label
                   nameKey="browser"
-                  stroke="0"
                 />
               </PieChart>
             </ChartContainer>
           </CardContent>
+          <CardFooter className="flex-col gap-2 text-sm">
+            <div className="flex items-center gap-2 font-medium leading-none">
+              You have attempted{" "}
+              {((topperTests - studentTests) * 100) / topperTests}% less tests
+              <TrendingDown className="h-4 w-4" />
+            </div>
+            {/* <div className="leading-none text-muted-foreground">
+              Showing total visitors for the last 6 months
+            </div> */}
+          </CardFooter>
         </Card>
       </div>
       <div>
