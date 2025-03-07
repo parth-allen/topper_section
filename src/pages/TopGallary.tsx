@@ -25,7 +25,11 @@ interface SubjectColors {
   hover: string;
   text: string;
 }
-
+console.log(finalPhysicsScore,finalChemistryScore,finalMathsScore);
+import { finalPhysicsScore,finalChemistryScore,finalMathsScore } from '../calculation';
+const overallScoreOfSubjects = Math.round(
+  (finalPhysicsScore + finalChemistryScore + finalMathsScore) / 3
+);
 interface SubjectsProgress {
   phy: number;
   chem: number;
@@ -91,22 +95,22 @@ const motivationalQuotes: QuoteCategory[] = [
 ];
 
 const MotivationalTracker: React.FC = () => {
-  const [progress, setProgress] = useState<number>(65);
+  const [progress, setProgress] = useState<number>(0);
   const [quote, setQuote] = useState<string>("");
   const [animateProgress, setAnimateProgress] = useState<boolean>(false);
   
   // Static values as per your requirement
-  const userName = "parth-allen";
+  const userName = "Ram";
   const currentTime = "2025-03-07 05:53:14";
 
   const [subjects, setSubjects] = useState<SubjectsProgress>({
-    phy: 70,
-    chem: 65,
-    maths: 80
+    phy: finalPhysicsScore,
+    chem: finalChemistryScore,
+    maths: finalMathsScore
   });
 
-  const overallCompareScore: number = 78;
-  const overallProgress: number = Math.round(overallCompareScore / 3);
+  const overallCompareScore: number = overallScoreOfSubjects;
+  const overallProgress: number = overallScoreOfSubjects;
 
   const navigate = useNavigate();
 
@@ -166,33 +170,42 @@ const MotivationalTracker: React.FC = () => {
   );
   const renderSubjectCard = (
     subject: 'phy' | 'chem' | 'maths',
-    data: { name: string; progress: number; color: string }
-  ) => (
-    <Card 
-      className={cn(
-        "relative overflow-hidden cursor-pointer transition-all duration-300",
-        "hover:shadow-lg hover:translate-y-[-2px]"
-      )}
-      onClick={() => navigate(`/topgallary/${subject}`)}
-    >
-      <CardHeader className="pb-2">
-        <CardTitle className="flex items-center justify-between">
-          {data.name}
-          <ExternalLink className="w-4 h-4" />
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="text-2xl font-bold mb-2">{data.progress}%</div>
-        <Progress 
-          value={data.progress} 
-          className={cn(
-            "h-2 transition-all duration-300",
-            data.color
-          )}
-        />
-      </CardContent>
-    </Card>
-  );
+    data: { name: string; color: string }
+  ) => {
+    const progress =
+      subject === 'phy' ? finalPhysicsScore :
+      subject === 'chem' ? finalChemistryScore :
+      subject === 'maths' ? finalMathsScore :
+      0; // Default case, if needed
+  
+    return (
+      <Card 
+        className={cn(
+          "relative overflow-hidden cursor-pointer transition-all duration-300",
+          "hover:shadow-lg hover:translate-y-[-2px]"
+        )}
+        onClick={() => navigate(`/topgallary/${subject}`)}
+      >
+        <CardHeader className="pb-2">
+          <CardTitle className="flex items-center justify-between">
+            {data.name}
+            <ExternalLink className="w-4 h-4" />
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-2xl font-bold mb-2">{progress}%</div>
+          <Progress 
+            value={progress} 
+            className={cn(
+              "h-2 transition-all duration-300",
+              data.color
+            )}
+          />
+        </CardContent>
+      </Card>
+    );
+  };
+  
 
   // ... (previous code remains same)
 
@@ -224,15 +237,15 @@ const renderMainDashboard = (): JSX.Element => {
               <ExternalLink className="w-4 h-4" />
             </CardTitle>
             <CardDescription>
-              {getMotivationalText(progress)}
+              {getMotivationalText(overallCompareScore)}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold mb-2 text-center">
-              {progress}%
+              {overallCompareScore}%
             </div>
             <Progress 
-              value={progress} 
+              value={overallCompareScore} 
               className="h-3"
             />
           </CardContent>
@@ -241,17 +254,17 @@ const renderMainDashboard = (): JSX.Element => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {renderSubjectCard('phy', { 
             name: 'Physics', 
-            progress: subjects.phy,
+            // progress: finalPhysicsScore,
             color: 'bg-blue-600'
           })}
           {renderSubjectCard('chem', { 
             name: 'Chemistry', 
-            progress: subjects.chem,
+            // progress: finalChemistryScore,
             color: 'bg-purple-600'
           })}
           {renderSubjectCard('maths', { 
             name: 'Mathematics', 
-            progress: subjects.maths,
+            // progress: finalMathsScore,
             color: 'bg-blue-500'
           })}
         </div>
@@ -265,19 +278,19 @@ const renderMainDashboard = (): JSX.Element => {
     const subjectData: Record<string, SubjectData> = {
       phy: {
         name: 'Physics',
-        progress: subjects.phy,
+        progress: finalPhysicsScore,
         topics: ['Mechanics', 'Electromagnetism', 'Thermodynamics', 'Optics'],
         topicsProgress: [75, 65, 80, 60]
       },
       chem: {
         name: 'Chemistry',
-        progress: subjects.chem,
+        progress: finalChemistryScore,
         topics: ['Organic Chemistry', 'Inorganic Chemistry', 'Physical Chemistry', 'Analytical Methods'],
         topicsProgress: [60, 70, 65, 65]
       },
       maths: {
         name: 'Mathematics',
-        progress: subjects.maths,
+        progress: finalMathsScore,
         topics: ['Algebra', 'Calculus', 'Statistics', 'Geometry'],
         topicsProgress: [85, 80, 75, 80]
       }
@@ -288,9 +301,9 @@ const renderMainDashboard = (): JSX.Element => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background to-muted p-6">
         <div className="max-w-5xl mx-auto space-y-6">
-          {renderWelcomeCard()}
+          {/* {renderWelcomeCard()} */}
           
-          <div className="flex items-center gap-4 mb-6">
+          {/* <div className="flex items-center gap-4 mb-6">
             <Button
               variant="outline"
               size="icon"
@@ -299,9 +312,9 @@ const renderMainDashboard = (): JSX.Element => {
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <h2 className="text-2xl font-bold">{data.name} Progress</h2>
-          </div>
+          </div> */}
 
-          <Card>
+          {/* <Card>
             <CardHeader>
               <CardTitle>Overall Progress</CardTitle>
               <CardDescription>
@@ -317,25 +330,55 @@ const renderMainDashboard = (): JSX.Element => {
                 className="h-3"
               />
             </CardContent>
-          </Card>
+          </Card> */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {data.topics.map((topic, index) => (
-              <Card key={topic}>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">{topic}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-xl font-bold mb-2">
-                    {data.topicsProgress[index]}%
-                  </div>
-                  <Progress 
-                    value={data.topicsProgress[index]} 
-                    className="h-2"
-                  />
-                </CardContent>
-              </Card>
-            ))}
+         
+  {/* <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-lg">Physics</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-xl font-bold mb-2">
+        {finalPhysicsScore}%
+      </div>
+      <Progress 
+        value={finalPhysicsScore} 
+        className="h-2"
+      />
+    </CardContent>
+  </Card> */}
+
+  {/* <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-lg">Chemistry</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-xl font-bold mb-2">
+        {finalChemistryScore}%
+      </div>
+      <Progress 
+        value={finalChemistryScore} 
+        className="h-2"
+      />
+    </CardContent>
+  </Card> */}
+
+  {/* <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-lg">Mathematics</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-xl font-bold mb-2">
+        {finalMathsScore}%
+      </div>
+      <Progress 
+        value={finalMathsScore} 
+        className="h-2"
+      />
+    </CardContent>
+  </Card> */}
+
           </div>
         </div>
       </div>
@@ -347,7 +390,7 @@ const renderMainDashboard = (): JSX.Element => {
       name: 'Overall',
       progress: overallProgress,
       topics: ['Physics', 'Chemistry', 'Mathematics', 'Overall Performance'],
-      topicsProgress: [subjects.phy, subjects.chem, subjects.maths, overallProgress]
+      topicsProgress: [finalPhysicsScore, finalChemistryScore, finalMathsScore, overallCompareScore]
     };
 
     return (
@@ -385,28 +428,52 @@ const renderMainDashboard = (): JSX.Element => {
           </Card>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {overallData.topics.map((topic, index) => (
-              <Card key={topic}>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">{topic}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-xl font-bold mb-2">
-                    {overallData.topicsProgress[index]}%
-                  </div>
-                  <Progress 
-                    value={overallData.topicsProgress[index]} 
-                    className={cn(
-                      "h-2",
-                      index === 0 ? "bg-blue-600" :
-                      index === 1 ? "bg-purple-600" :
-                      index === 2 ? "bg-blue-500" :
-                      "bg-primary"
-                    )}
-                  />
-                </CardContent>
-              </Card>
-            ))}
+          
+  <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-lg">Physics</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-xl font-bold mb-2">
+        {finalPhysicsScore}%
+      </div>
+      <Progress 
+        value={finalPhysicsScore} 
+        className="h-2 bg-blue-600"
+      />
+    </CardContent>
+  </Card>
+
+  <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-lg">Chemistry</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-xl font-bold mb-2">
+        {finalChemistryScore}%
+      </div>
+      <Progress 
+        value={finalChemistryScore} 
+        className="h-2 bg-purple-600"
+      />
+    </CardContent>
+  </Card>
+
+  <Card>
+    <CardHeader className="pb-2">
+      <CardTitle className="text-lg">Mathematics</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-xl font-bold mb-2">
+        {finalMathsScore}%
+      </div>
+      <Progress 
+        value={finalMathsScore} 
+        className="h-2 bg-blue-500"
+      />
+    </CardContent>
+  </Card>
+
           </div>
         </div>
       </div>

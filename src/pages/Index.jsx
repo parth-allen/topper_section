@@ -94,7 +94,7 @@ const Index = () => {
           {/* Welcome section */}
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-semibold">
-              {greeting}, <span className="text-brand-blue">BIO</span>
+              {greeting}, <span className="text-brand-blue">RAM</span>
             </h1>
           </div>
 

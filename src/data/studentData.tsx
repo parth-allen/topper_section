@@ -1,5 +1,5 @@
 export const studentData = {
-    name: "Aryan Sharma",
+    name: "Ram",
     email: "aryan.sharma@example.com",
     lastLogin: "2024-03-01T12:00:00Z", // Simulating last login 5 days ago
     timeSpent: 120, // Minutes studied today

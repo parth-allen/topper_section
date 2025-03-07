@@ -38,7 +38,7 @@ const App = () => (
   subjectRanks={[50]}
   subjectScores={[67]}/>} /> */}
           <Route path="/doubts" element={<Index />} />
-          <Route path="/testven" element={<TESTVEN />} />
+          {/* <Route path="/testven" element={<TESTVEN />} /> */}
           <Route path="/practice" element={<Index />} />
           <Route path="/tests" element={<Index />} />
           <Route path="/improvement-book" element={<Index />} />

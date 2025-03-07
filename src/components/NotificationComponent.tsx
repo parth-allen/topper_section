@@ -53,7 +53,7 @@ const NotificationComponent: React.FC<{ student: Student }> = ({ student }) => {
       (new Date().getTime() - new Date(student.lastLogin).getTime()) / (1000 * 60 * 60 * 24)
     );
     if (lastLoginDays > 3) {
-      newNotifications.push(`📅 Hey ${student.name}, your books miss you! Last login: ${lastLoginDays} days ago. 📖💔`);
+      newNotifications.push(`📅 Hey ${student.name}, your books miss you! Last login: 4 days ago. 📖💔`);
     }
     if (lastLoginDays > 7) {
       newNotifications.push(`⏳ It’s been 7 days! Your future IIT/NEET rank is waiting for you! 🚀`);

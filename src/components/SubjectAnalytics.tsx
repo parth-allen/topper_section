@@ -113,8 +113,8 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
       : 0;
 
   return (
-    <div className="w-full grid grid-cols-4 gap-4">
-      <Card className="flex flex-col">
+    <div className="w-full grid grid-cols-4 gap-4 ">
+      { subject === "Overall" && <Card className="flex flex-col">
         <CardHeader>
           <CardTitle className="text-center">Tests Attempted</CardTitle>
         </CardHeader>
@@ -135,7 +135,7 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
             </PieChart>
           </ChartContainer>
         </CardContent>
-      </Card>
+      </Card>}
 
       <Card>
         <CardHeader>

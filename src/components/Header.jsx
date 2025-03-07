@@ -7,9 +7,9 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 const Header = () => {
   const notifications = 20; // Example notification count
-  const userName = "BIO"; // Example user name
-  const userInitial = "B"; // User initial for avatar
-  const currentCourse = "11th + NEET";
+  const userName = "Ram"; // Example user name
+  const userInitial = "R"; // User initial for avatar
+  const currentCourse = "JEE (Main + Advanced)";
 
   return (
     <header className="border-b border-gray-200 bg-white">
