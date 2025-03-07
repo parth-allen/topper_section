@@ -129,7 +129,6 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
                 data={totalTestData}
                 dataKey="visitors"
                 nameKey="browser"
-                label
                 labelLine={false}
               />
             </PieChart>
@@ -252,7 +251,7 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
         </CardContent>
         <CardFooter className="flex items-center justify-center gap-2 text-sm">
           <div className="flex gap-1 font-medium leading-none">
-            Trending up by {scoreImprovement}%
+            You have improved by 5.2%
             <TrendingUp className="h-4 w-4 text-green-500" />
           </div>
         </CardFooter>
