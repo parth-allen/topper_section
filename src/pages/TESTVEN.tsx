@@ -25,13 +25,15 @@ const TESTVEN = () => {
 
   useEffect(() => {
     (async () => {
+      // using static data for now but based on the student's data this will keep changing
       const data = await useAI(`subject="Physics"
           pyqTopper={100}
           pyqStudent={90}
           totalTopper={100}
           totalStudent={90}
           subjectRanks={[80, 90, 70, 50, 13, 45, 22]}
-          subjectScores={[80, 90, 70, 50, 13, 45, 22]}    This is the a student's data  I am creating a dashboard to compare himself with the toppers, slightly insult him and motivate him to do better in the future. Also GIve only text data for now and no formattings like bold, italic, etc.    keep it to about 2-3 lines only`);
+          subjectScores={[80, 90, 70, 50, 13, 45, 22]}    
+          This is the a student's data  I am creating a dashboard to compare himself with the toppers, slightly insult him and motivate him to do better in the future. Also GIve only text data for now and no formattings like bold, italic, etc.    keep it to about 3-4 lines only`);
       setAIResponse(data);
     })();
   }, []);
