@@ -17,7 +17,7 @@ const TestReminder = ({
 
   const navigate= useNavigate();
   const handleClick = () => {
-    navigate('/Input_name');
+    navigate('/topgallary');
   
   
   }

@@ -12,12 +12,7 @@ import Chem from "./pages/Chem.tsx";
 import Overall from "./pages/Overall.tsx"
 import Maths from "./pages/Maths.tsx"
 import TESTVEN from "./pages/TESTVEN";
-<<<<<<< HEAD
 import NotificationComponent from "./components/NotificationComponent.tsx";
-=======
-import SubjectAnalytics from "./components/SubjectAnalytics.tsx";
-import Input_name from "./pages/Input_name.tsx";
->>>>>>> 8a0d913d0978b6bae3965cc8d35d29e3872b336e
 const queryClient = new QueryClient();
 import { studentData } from "./data/studentData.tsx";
 const App = () => (
@@ -34,7 +29,7 @@ const App = () => (
           <Route path="/topgallary/maths" element={<Maths />} />
           <Route path="/topgallary" element={<TopGallary />} />
           <Route path="/" element={<Index />} />
-          <Route path="/Input_name" element={<Input_name/>} />
+          {/* <Route path="/Input_name" element={<Input_name/>} /> */}
           {/* <Route path="/" element={<SubjectAnalytics subject="Physics"
   pyqTopper={90}
   pyqStudent={70}
