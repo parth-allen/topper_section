@@ -33,7 +33,7 @@ const TESTVEN = () => {
           totalStudent={90}
           subjectRanks={[80, 90, 70, 50, 13, 45, 22]}
           subjectScores={[80, 90, 70, 50, 13, 45, 22]}    
-          This is the a student's data  I am creating a dashboard to compare himself with the toppers, slightly insult him and motivate him to do better in the future. Also GIve only text data for now and no formattings like bold, italic, etc.    keep it to about 3-4 lines only`);
+          This is a student's data  I am creating a dashboard to compare himself with the toppers, slightly insult him and motivate him to do better in the future. Also GIve only text data for now and no formattings like bold, italic, etc.    keep it to about 3-4 lines only`);
       setAIResponse(data);
     })();
   }, []);
