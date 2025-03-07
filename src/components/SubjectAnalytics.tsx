@@ -252,8 +252,22 @@ const SubjectAnalytics: React.FC<SubjectAnalyticsProps> = ({
         </CardContent>
         <CardFooter className="flex items-center justify-center gap-2 text-sm">
           <div className="flex gap-1 font-medium leading-none">
-            Trending up by {scoreImprovement}%
-            <TrendingUp className="h-4 w-4 text-green-500" />
+          {
+  scoreImprovement < 0 ? (
+    <>
+      Trending down by {Math.abs(scoreImprovement)}%
+      <TrendingDown className="h-4 w-4 text-red-500" />
+    </>
+  ) : scoreImprovement === 0 ? (
+    "No change in score"
+  ) : (
+    <>
+      Trending up by {scoreImprovement}%
+      <TrendingUp className="h-4 w-4 text-green-500" />
+    </>
+  )
+}
+
           </div>
         </CardFooter>
       </Card>
